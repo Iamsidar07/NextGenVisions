@@ -1,6 +1,4 @@
-
 const ImageCardSkeleton = () => {
-
     return (
         <div className='bg-white border rounded-t-lg  w-full  '>
             <div className='flex items-center space-x-1 border-b '>
@@ -19,9 +17,7 @@ const ImageCardSkeleton = () => {
             <div className='relative'>
                 <div className='bg-gray-500 animate-pulse w-full h-auto rounded-b-sm min-w-md aspect-square'></div>
             </div>
-
         </div>
     )
 }
-
-export default ImageCardSkeleton
+export default ImageCardSkeleton;

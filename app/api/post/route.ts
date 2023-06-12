@@ -1,7 +1,7 @@
-import PostSchema from "@/models/Post"
-import { Iform } from "@/types"
-import { connectToDatabase } from "@/utils/database"
-import cld from "cloudinary"
+import PostSchema from '@/models/Post';
+import { Iform } from '@/types';
+import { connectToDatabase } from '@/utils/database';
+import cld from 'cloudinary';
 
 const cloudinary = cld.v2;
 
@@ -9,23 +9,21 @@ cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_SECRETE_KEY
-
-})
+});
 
 export const GET = async () => {
     try {
         await connectToDatabase();
         const posts = await PostSchema.find({});
-        return new Response(JSON.stringify(posts), { status: 200 })
+        return new Response(JSON.stringify(posts), { status: 200 });
     } catch (error) {
-        console.log(error)
-        return new Response('Failed to fetch posts', { status: 500 })
+        console.log(error);
+        return new Response('Failed to fetch posts', { status: 500 });
     }
 }
 
-const getRandomNumber = () => {
-    return Math.ceil(Math.random() * 11);
-}
+const getRandomNumber = () => Math.ceil(Math.random() * 11);
+
 export const POST = async (req: Request) => {
     const form:Iform = await req.json();
     const randomId = getRandomNumber();
@@ -45,11 +43,10 @@ export const POST = async (req: Request) => {
             photos: photosUrl,
             profilePhoto: profilePhoto,
             numberOfImages: form.numberOfImages
-        })
-        return new Response(JSON.stringify(newPost), { status: 200 })
+        });
+        return new Response(JSON.stringify(newPost), { status: 200 });
     } catch (error) {
-        console.log(error)
-        return new Response('Failed to share post', { status: 500 })
+        console.log(error);
+        return new Response('Failed to share post', { status: 500 });
     }
-
 }

@@ -1,14 +1,7 @@
-import { Post } from "@/types"
+import { ImageCardProps} from "@/types"
 import Image from "next/image"
-import Link from "next/link";
-
-interface ImageCardProps {
-    post:Post;
-    setOpenImageId: React.Dispatch<React.SetStateAction<string | null>>;
-}
 
 const ImageCard = ({ post, setOpenImageId }: ImageCardProps) => {
-
     return (
         <div onClick={()=>setOpenImageId(post._id)} className='bg-white border rounded-t-lg  w-full cursor-pointer'>
             <div className='flex items-center space-x-1 border-b '>
@@ -50,4 +43,4 @@ const ImageCard = ({ post, setOpenImageId }: ImageCardProps) => {
     )
 }
 
-export default ImageCard
+export default ImageCard;

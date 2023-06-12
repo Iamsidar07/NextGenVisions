@@ -1,4 +1,4 @@
-import { model, Schema, models } from "mongoose";
+import { model, Schema, models } from 'mongoose';
 
 const PostSchema = new Schema({
     name: { type: String, required: true },
