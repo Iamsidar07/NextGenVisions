@@ -2,10 +2,12 @@
 import { Form } from "@/components"
 import { Iform } from "@/types";
 import Image from "next/image"
+import { useRouter } from "next/navigation";
 import React, { useState } from "react"
 
 
 const CreatePost = () => {
+    const router = useRouter();
     const [isImageGenerating, setIsImageGenerating] = useState(false);
     const [isSharingImage, setIsSharingImage] = useState(false);
     const [form, setForm] = useState<Iform>({
@@ -40,12 +42,13 @@ const CreatePost = () => {
                 console.error(error);
             } finally {
                 setIsImageGenerating(false);
+                router.push('/')
             }
         } else {
             alert("Please enter a subject, description, style, graphics, and quality.");
         }
     }
-    
+
 
     const handleShareImageSubmission = async () => {
         if (form.photo && form.prompt) {

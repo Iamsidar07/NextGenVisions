@@ -18,7 +18,7 @@ const Navbar = () => {
             NexGenVisions
           </span>
         </Link>
-        <Link href={'/create-post'} className='px-4 py-1.5 rounded-full bg-black hover:bg-black/75 text-white transition-all duration-150 ease-linear cursor-pointer flex items-center space-x-2  text-center '>
+        <Link href={'/create-post'} className='px-5 py-2.5 rounded-full bg-black hover:bg-black/75 text-white transition-all duration-150 ease-linear cursor-pointer flex items-center space-x-2  text-center '>
           <BsBrush size={16} className='text-purple-700'/>
           <span>Create</span>
         </Link>
