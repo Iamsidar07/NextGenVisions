@@ -12,7 +12,7 @@ const openai = new OpenAIApi(configuration);
 const getOpenAiPrompt = async (form:Iform) => {
     const { subject, description, style, graphics, quality } = form;
     const completion = await openai.createCompletion({
-        model: "text-davinci-003",
+        model: 'text-davinci-003',
         prompt: `I want you to act as a highly experienced photographer. You will use rich and highly artistic language when describing your photo prompts based on subject, description, style, graphics and quality from now on.
         ###
         subject: A village
@@ -36,7 +36,7 @@ const getOpenAiPrompt = async (form:Iform) => {
 }
 
 
-export const POST =async (req:Request,res:Response) => {
+export const POST =async (req:Request) => {
     try {
         await connectToDatabase();
         const  form:Iform   = await req.json() ;
@@ -49,9 +49,9 @@ export const POST =async (req:Request,res:Response) => {
             response_format: 'b64_json',
         });
         dalleRes.data.data.map(({ b64_json }) => photos.push(b64_json as string));
-        return new Response(JSON.stringify({photos,photo:photos[0],prompt:openAiEnhancedPrompt}), { status: 200 })
+        return new Response(JSON.stringify({photos,photo:photos[0],prompt:openAiEnhancedPrompt}), { status: 200 });
     } catch (error) {
         console.error(error);
-        return new Response('Failed to generate image',{ status:500 })
+        return new Response('Failed to generate image',{ status:500 });
     }
 }

@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from 'react';
 export interface Post {
     photos: string[];
     _id: string;
@@ -19,4 +20,31 @@ export interface Iform {
     photo: string;
     photos: string[];
     numberOfImages: number;
+}
+
+export interface FormProps {
+    form: Iform;
+    setForm: Dispatch<SetStateAction<Iform>>;
+    generateImage: () => void;
+    handleShareImageSubmission: () => void;
+    isImageGenerating: boolean;
+    isSharingImage: boolean;
+}
+
+export interface ImageCardProps {
+    post: Post;
+    setOpenImageId: Dispatch<SetStateAction<string | null>>;
+}
+
+export interface ModalProps {
+    post: Post;
+    setOpenImageId: Dispatch<SetStateAction<string | null>>;
+}
+
+export interface SelectProps {
+    label: string;
+    options: string[];
+    name: keyof Iform;
+    form: Iform;
+    setForm: React.Dispatch<SetStateAction<Iform>>;
 }

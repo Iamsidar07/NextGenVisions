@@ -1,19 +1,20 @@
 'use client'
-import { ImageCard, ImageCardSkeleton, Modal } from "@/components";
-import { Post } from "@/types";
-import { ChangeEvent, useEffect, useState } from "react";
-
-
+import { ImageCard, ImageCardSkeleton, Modal } from '@/components';
+import { Post } from '@/types';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 export default function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [openImageId, setOpenImageId] = useState<string | null>(null);
-  const [searchInputValue,setSearchInputValue]=useState('');
-  const [searchResults,setSearchResults]=useState<Post[]>([]);
+  const [searchInputValue, setSearchInputValue] = useState('');
+  const [searchResults, setSearchResults] = useState<Post[]>([]);
 
   const Posts = ({ data }: { data: Post[] }) => {
-    return data.map((post, i) => openImageId === post._id ? (<Modal key={i} post={post} setOpenImageId={setOpenImageId} />) : (<ImageCard key={i} post={post} setOpenImageId={setOpenImageId} />))
+    return data.map((post, i) => openImageId === post._id ?
+      (<Modal key={i} post={post} setOpenImageId={setOpenImageId} />) :
+      (<ImageCard key={i} post={post} setOpenImageId={setOpenImageId} />)
+    );
   }
 
   //fetch all posts
@@ -32,14 +33,17 @@ export default function Home() {
       }
     }
     fetchPosts();
-  }, [])
+  }, []);
 
-  const handleSearchChange = (e:ChangeEvent<HTMLInputElement>)=>{
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchInputValue(e.target.value);
-    setTimeout(()=>{
-      const searchPosts = posts.filter((item) => item.prompt.toLowerCase().includes(e.target.value.toLowerCase()) || item.name.toLowerCase().includes(e.target.value.toLowerCase()));
+    const searchValLowerCase = e.target.value.toLowerCase();
+    setTimeout(() => {
+      const searchPosts = posts.filter((item) => item.prompt.toLowerCase().includes(searchValLowerCase) ||
+        item.name.toLowerCase().includes(searchValLowerCase)
+      );
       setSearchResults(searchPosts);
-    },100);
+    }, 300);
   }
 
   return (
@@ -53,15 +57,14 @@ export default function Home() {
         NexGenVisions: Ignite creativity, redefine limits, create wonders. Fuel innovation, explore possibilities, illuminate with your creations.
       </p>
       <input
-        placeholder="Search for images..."
+        placeholder='Search for images...'
         className='my-2 pl-4 py-2.5 md:py-3 rounded-sm border text-sm outline-none border-gray-300 w-full max-w-xs mb-6'
-        type="text"
+        type='text'
         value={searchInputValue}
         onChange={handleSearchChange}
       />
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 3xl:flex 3xl:flex-wrap gap-2'>
-       
-        <Posts data={searchInputValue ? searchResults : posts}/>
+        <Posts data={searchInputValue ? searchResults : posts} />
         {
           isLoading && (Array(8).fill(0).map((_, i) => <ImageCardSkeleton key={i} />))
         }
