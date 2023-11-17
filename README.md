@@ -1,3 +1,46 @@
+# NextGenVisions
+![nextgenvisions](/public/image.png)
+
+[nextgenvisions](https://next-gen-visions.vercel.app/) is an image generation platform built on top of dalle2 and openai api that generates the prompt for dalle2 to generate images based on the your input and uses those prompts to generate images using dalle2.
+
+## Tech stacks
+- nextjs
+- reactjs
+- cloudinary ( for image store)
+- file saver ( to save file on computer)
+- typescript
+- openai api (dalle2 and chat completetion to get prompt)
+- typescript
+- tailwindcss
+- mongodb
+
+### Setup in local machine
+- Clone this repository using command 
+```bash 
+git clone https://github.com/Iamsidar07/NextGenVisions.git
+```
+- Change your current directory to the project folder using command 
+```bash
+cd NextGenVisions
+```
+- rename ```.env.example``` to ```.env.local``` and fill all the properties
+```bash
+MONGODB_URI=
+OPENAI_API_KEY=
+OPENAI_ORGANIZATION_ID=
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_SECRETE_KEY=
+```
+- To install dependencies run command 
+```bash
+npm install
+```
+- To see your project run command
+```bash
+npm run dev
+```
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

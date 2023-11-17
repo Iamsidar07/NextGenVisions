@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 import { Toaster } from "react-hot-toast";
 
 export const metadata = {
-  title: "NexGenVisions",
+  title: "NextGenVisions",
   description: "Super charge your imagination with nextgenvisions.",
   creator: "Manoj Kumar",
   other: {
